@@ -1,0 +1,9 @@
+#!/bin/bash
+
+. "$(git --exec-path)/git-sh-setup"
+
+require_clean_work_tree co "Please commit or stash all your changes."
+
+require_work_tree
+cd_to_toplevel
+git checkout "$1"

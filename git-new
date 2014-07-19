@@ -1,0 +1,19 @@
+#!/bin/bash
+
+USAGE="<base> <target> : create a new branch from <base> called <target>"
+
+. "$(git --exec-path)/git-sh-setup"
+
+require_work_tree
+require_clean_work_tree new "Please commit or stash all your changes."
+
+BASE="$1"
+TARGET="$2"
+
+if [ "$BASE" != "" ] && [ "$TARGET" != "" ]; then
+   cd_to_toplevel
+   git checkout master
+   git checkout -b "$TARGET"
+else
+   usage
+fi
