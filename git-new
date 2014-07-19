@@ -12,7 +12,7 @@ TARGET="$2"
 
 if [ "$BASE" != "" ] && [ "$TARGET" != "" ]; then
    cd_to_toplevel
-   git checkout master
+   git checkout "$BASE" 
    git checkout -b "$TARGET"
 else
    usage
