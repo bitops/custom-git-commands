@@ -4,11 +4,12 @@
 
 require_clean_work_tree sync "Please commit or stash all your changes."
 
-require_work_tree
-cd_to_toplevel
-git fetch origin
-git checkout master
-git pull origin master
-git checkout qa
-git pull origin qa
-git checkout master
+TARGET="$1"
+
+if [ "$TARGET" != "" ]; then
+    require_work_tree
+    cd_to_toplevel
+    git fetch origin
+    git checkout $TARGET
+    git pull origin $TARGET
+fi
