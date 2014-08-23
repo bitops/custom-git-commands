@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#
+# A convenience wrapper to snapshot your work.
+#
+
+. "$(git --exec-path)/git-sh-setup"
+
+require_work_tree_exists
+cd_to_toplevel
+
+git stash save "Snapshot from $(date +%s)"
+git stash apply
