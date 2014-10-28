@@ -1,0 +1,17 @@
+#!/bin/bash
+
+USAGE="<oldname> <newname> : rename a branch from <oldname> to <newname>"
+
+. "$(git --exec-path)/git-sh-setup"
+
+require_work_tree
+
+OLDNAME="$1"
+NEWNAME="$2"
+
+if [ "$OLDNAME" != "" ] && [ "$NEWNAME" != "" ] && [ "$OLDNAME" != "$NEWNAME"]; then
+   cd_to_toplevel
+   git branch -m "$OLDNAME" "$NEWNAME"
+else
+   usage
+fi
