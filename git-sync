@@ -5,6 +5,7 @@
 require_clean_work_tree sync "Please commit or stash all your changes."
 
 TARGET="$1"
+CURRENT="$(git branch | grep '*' | awk '{print $2}')"
 
 if [ "$TARGET" != "" ]; then
     require_work_tree
@@ -12,4 +13,10 @@ if [ "$TARGET" != "" ]; then
     git fetch origin
     git checkout $TARGET
     git pull origin $TARGET
+elif [ "$TARGET" == "" ]; then
+    require_work_tree
+    cd_to_toplevel
+    git fetch origin
+    git checkout $CURRENT
+    git pull origin $CURRENT
 fi
