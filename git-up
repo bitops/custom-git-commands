@@ -4,9 +4,12 @@
 
 require_clean_work_tree sync "Please commit or stash all your changes."
 
-require_work_tree
-cd_to_toplevel
-git fetch origin
-git checkout master
-git pull origin master
-git push origin master
+CURRENT="$(git branch | grep '*' | awk '{print $2}')"
+
+if [ "$CURRENT" != "" ]; then
+  require_work_tree
+  cd_to_toplevel
+  git fetch origin
+  git pull origin $CURRENT
+  git push origin $CURRENT
+fi
