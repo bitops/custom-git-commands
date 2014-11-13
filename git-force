@@ -1,0 +1,20 @@
+#!/bin/bash
+
+. "$(git --exec-path)/git-sh-setup"
+
+require_clean_work_tree sync "Please commit or stash all your changes."
+
+TARGET="$1"
+CURRENT="$(git branch | grep '*' | awk '{print $2}')"
+
+if [ "$TARGET" != "" ]; then
+    require_work_tree
+    cd_to_toplevel
+    git checkout $TARGET
+    git push -f origin $TARGET
+elif [ "$TARGET" == "" ]; then
+    require_work_tree
+    cd_to_toplevel
+    git checkout $CURRENT
+    git push -f origin $CURRENT
+fi
