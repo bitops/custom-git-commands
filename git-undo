@@ -1,0 +1,15 @@
+#!/bin/bash
+
+USAGE="<file> : revert changes to <file>"
+
+. "$(git --exec-path)/git-sh-setup"
+
+require_work_tree
+
+TARGET="$1"
+
+if [ -f "$TARGET" ]; then
+   git checkout -- "$TARGET" 
+else
+   usage
+fi
