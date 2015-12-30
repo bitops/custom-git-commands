@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# make it look like you're working on something really hard - impress your friends, do other things to your enemies!
+
+cat /dev/urandom | hexdump -C | grep "ca fe"
