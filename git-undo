@@ -9,7 +9,7 @@ require_work_tree
 TARGET="$1"
 
 if [ -f "$TARGET" ]; then
-   git checkout -- "$TARGET" 
+   git reset HEAD "$TARGET" 
 else
    usage
 fi
