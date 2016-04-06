@@ -6,5 +6,5 @@ require_clean_work_tree sync "Please commit or stash all your changes."
 
 require_work_tree
 cd_to_toplevel
-git commit --allow-empty -m "Empty commit"
+git commit --allow-empty -m "$1"
 
